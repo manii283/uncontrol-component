@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React, {useRef} from 'react';
 import './App.css';
 
 function App() {
+
+  const inputRef = useRef(null);
+  const inputRef2 = useRef(null);
+
+  const submitForm = (e) => {
+     e.preventDefault();
+     console.log('input 1:', inputRef.current.value)
+     console.log('input 2:', inputRef2.current.value)
+     let input3 = document.getElementById('input3').value
+     console.log('input 3:', input3)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1> Uncontrolled Component </h1>
+        <form onSubmit={submitForm}>
+          <input type='text'ref={inputRef}/> <br />
+          <input type='text'ref={inputRef2} /> <br />
+          <input type='text' id='input3' /> <br />
+          <button>Submit</button>
+        </form>
     </div>
   );
 }
